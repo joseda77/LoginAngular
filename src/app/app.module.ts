@@ -7,11 +7,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ServicioService } from './Service/servicio.service';
+import { ListaclientesComponent } from './listaclientes/listaclientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ListaclientesComponent
+    
   ],
   imports: [
     BrowserModule,

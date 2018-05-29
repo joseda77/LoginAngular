@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Usuario } from '../Class/usuario.class';
 import {  Http } from '@angular/http';
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
@@ -9,8 +10,12 @@ export class ServicioService{
     }
 
     login(user:String,pws:String):Observable<any>{
-        console.log(user,pws);
         return this.http.get('http://localhost:8080/WSEjemplo/rest/Usuario?login='+user+'&clave='+pws)
-        .map(response => { return response.text()} );
+        .map(Response => {return Response.text()});
+    }
+
+    getClientes():Observable<any>{
+        return this.http.get('http://localhost:8080/WSEjemplo/rest/Cliente')
+        .map(Response => {return Response.text()});
     }
 }
