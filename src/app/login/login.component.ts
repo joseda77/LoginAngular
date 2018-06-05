@@ -10,17 +10,25 @@ import {  Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   userName: String = '';
   pws: String = '';
-  errorMessage:String = '';
+  errorMessage: String = '';
   constructor(public servicio: ServicioService, public routes: Router) {}
 
   ngOnInit() {}
 
-  onLogin(){   
-    this.servicio.login(this.userName,this.pws).subscribe(result => {
-      this.routes.navigate(['../clientes']);
+  onLogin() {
+    this.servicio.login(this.userName, this.pws).subscribe(result => {
+      if (result === '') {
+        this.userName = '';
+        this.pws = '';
+        this.routes.navigate(['../listaclientes']);
+      } else {
+        this.userName = '';
+        this.pws = '';
+        this.errorMessage = result;
+      }
     },
       error => {
-        console.log("Este es el error  del frontend "+<any>error);
+        console.log('Este es el error  del frontend ' + <any>error);
     });
   }
 

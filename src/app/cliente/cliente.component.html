@@ -1,0 +1,22 @@
+<form name="clienteForm" (submit)="onGuardar()">
+  <div>
+    <div>
+      <label>Cédula</label>
+      <input type="text" placeholder="cedula de ciudadania" required [(ngModel)]="cliente.cedula" name="cedula" >
+    </div>
+    <div>
+      <label>Nombre</label>
+      <input type="text" placeholder="Nombre" required [(ngModel)]="cliente.nombres" name="nombres">
+    </div>
+    <div>
+      <label>Apellidos</label>
+      <input type="text" placeholder="Apellidos" required [(ngModel)]="cliente.apellidos" name="apellidos">
+    </div>
+    <div>
+      <label>Correo Electronico</label>
+      <input type="email" placeholder="email" required [(ngModel)]="cliente.correoElectronico" name="email">
+    </div>
+    <button type="submit">Guardar</button>
+    <span>{{errorMessage}}</span>
+  </div>
+</form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente} from '../cliente';
 import { ServicioService } from '../Service/servicio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listaclientes',
@@ -8,10 +9,10 @@ import { ServicioService } from '../Service/servicio.service';
   styleUrls: ['./listaclientes.component.css']
 })
 export class ListaclientesComponent implements OnInit {
-  clientes:  Cliente[];
-  constructor(public servicio: ServicioService) {
+  clientes:  Cliente[] = [];
+  constructor(public servicio: ServicioService, public routes: Router) {
     servicio.getClientes().subscribe(result => {
-      var obj = JSON.parse(result);
+      const obj = JSON.parse(result); // Depronto saca error por el const, cambiar por var
       this.clientes = obj.clienteWS;
     });
   }
@@ -19,12 +20,13 @@ export class ListaclientesComponent implements OnInit {
   ngOnInit() {
   }
 
-  onNuevo(){
+  onNuevo() {
+    this.routes.navigate(['/nuevoCliente']);
     this.servicio.getClientes().subscribe(result => {
       alert(result);
-      var obj = result;
+      const obj = result;
       this.clientes = obj.clientesWS;
-    })
+    });
   }
 
 

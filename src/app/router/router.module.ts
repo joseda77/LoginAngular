@@ -3,24 +3,29 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { ListaclientesComponent } from '../listaclientes/listaclientes.component';
+import { ClienteComponent } from '../cliente/cliente.component';
 
-const appModule: Routes=[
+const appModule: Routes = [
   {
-    path:'',
+    path: '',
     component: LoginComponent
   },
   {
-    path:'clientes',
+    path: 'listaclientes',
     component: ListaclientesComponent
+  },
+  {
+    path: 'nuevoCliente',
+    component: ClienteComponent
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(appModule,{})
+    RouterModule.forRoot(appModule, {})
   ],
-  exports:[RouterModule],
+  exports: [RouterModule],
   providers: [],
   declarations: []
 })
